@@ -34,11 +34,9 @@ gallery.style.margin = "0";
 gallery.style.padding = "0";
 
 
-gallery.innerHTML = images
-                    .map(image => `<li><img src="${image.url}" alt="${image.alt}"></li>`)
-                    .join("");
-
-
+gallery.insertAdjacentHTML("beforeend", images
+  .map(image => `<li><img src="${image.url}" alt="${image.alt}"></li>`)
+  .join(""));
 
 document.querySelectorAll("img").forEach(image => image.style.maxWidth = "100%");
 
