@@ -33,13 +33,16 @@ gallery.style.listStyleType = "none";
 gallery.style.margin = "0";
 gallery.style.padding = "0";
 
-for (let image of images) {
-  let img = document.createElement("img");
-  img.src = image.url;
-  img.alt = image.alt;
-  img.style.maxWidth = "100%";
-  const li = document.createElement("li");
-  li.append(img);
-  li.style.width = "calc((100% - 40px)/3)";
-  gallery.append(li);
-}
+
+gallery.innerHTML = images
+                    .map(image => `<li><img src="${image.url}" alt="${image.alt}"></li>`)
+                    .join("");
+
+
+
+document.querySelectorAll("img").forEach(image => image.style.maxWidth = "100%");
+
+
+
+
+document.querySelectorAll("li").forEach(item => item.style.width = "calc((100% - 40px)/3)");
